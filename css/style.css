@@ -1,0 +1,951 @@
+@charset "UTF-8";
+/* Variables de color y tipografía */
+/*FIN DE VARIABLES*/
+/*BASES GENERALES*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita scroll horizontal */
+  display: flex;
+  flex-direction: column; /* Para que header y main se apilen */
+  align-items: center; /* Centra el contenido en el eje horizontal */
+  min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la ventana */
+  padding: 0 10px; /* Padding general para contenido si la ventana es muy estrecha */
+}
+
+/*FIN DE BASES GENERALES*/
+/*PORTAL DE ACCESO*/
+.box-portal {
+  background-color: #0f0f0f;
+  overflow: hidden;
+}
+
+/* Estilos del Encabezado */
+.header-portal {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  width: 100%;
+  position: relative;
+  max-width: 1200px;
+}
+
+.header-portal::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  margin: 1rem auto 0;
+  background: linear-gradient(135deg, #d4af37, #cfa35f);
+  border-radius: 2px;
+}
+
+.header-portal h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+  color: #f5f5f5;
+}
+
+/* Contenido principal */
+.main-portal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* Cards */
+.card-portal {
+  background-color: #1b1b1b;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+  color: #bbbbbb;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.card.animation-delay-0\.2 {
+  animation-delay: 0.2s;
+}
+
+.card.animation-delay-0\.4 {
+  animation-delay: 0.4s;
+}
+
+.card.animation-delay-0\.6 {
+  animation-delay: 0.6s;
+}
+
+.card.animation-delay-0\.8 {
+  animation-delay: 0.6s;
+}
+
+/* Carrusel */
+.carousel-placeholder {
+  font-size: 1rem;
+}
+
+/* Bloques de texto */
+.text-block {
+  align-items: flex-start;
+  text-align: left;
+  padding: 30px;
+}
+
+.text-block p {
+  margin-bottom: 1rem;
+}
+
+.text-block p:first-child,
+.text-block p:last-child,
+.text-block strong {
+  font-weight: 600;
+  color: #f5f5f5;
+}
+
+/* Demo section */
+.demo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.demo-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.demo-section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  margin: 0.5rem auto;
+  background: linear-gradient(135deg, #d4af37, #cfa35f);
+}
+
+.demo-video-placeholder {
+  min-height: 280px;
+  width: 80%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botones */
+.action-buttons-portal {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.btn-portal {
+  padding: 0.8rem 2rem;
+  background: #252525;
+  background-size: 200% 200%;
+  color: #f5f5f5;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.btn-portal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.btn-portal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn-portal:hover::before {
+  left: 200%;
+}
+
+/* Animaciones */
+@keyframes fadeUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* Responsive */
+@media (max-width: 992px) {
+  main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 15px;
+  }
+  .text-block {
+    align-items: center;
+    text-align: center;
+  }
+  .demo-section {
+    padding: 0 10px;
+  }
+  .demo-video-placeholder {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+  header {
+    padding: 2rem 1rem 1.5rem;
+  }
+  .demo-section h2 {
+    font-size: 1.8rem;
+  }
+  .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  .action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+/*FIN DE PORTAL DE ACCESO*/
+/*PORTAL DE LOGIN*/
+@-webkit-keyframes slide-out-top {
+  0% {
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(-50%, -1050px);
+    transform: translate(-50%, -1050px);
+    opacity: 0;
+  }
+}
+@keyframes slide-out-top {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -1050px);
+    opacity: 0;
+  }
+}
+.slide-out-top {
+  animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+.box {
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Contenedor principal para la perspectiva 3D */
+.container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  perspective: 1500px; /* Mayor perspectiva para un efecto 3D más pronunciado */
+  overflow: hidden; /* Oculta lo que se salga de los límites */
+}
+
+/* Estilos de las puertas */
+.door {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: #1a1a1a;
+  /* ¡IMPORTANTE! Reemplaza con tu imagen de textura de madera */
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Transición más suave y con rebote */
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8); /* Sombra interior más profunda */
+  border-radius: 15px; /* Bordes redondeados generales */
+  border: #6b6b6b 1px solid;
+}
+
+.door-left {
+  left: 0;
+  transform-origin: left;
+}
+
+.door-right {
+  right: 0;
+  transform-origin: right;
+}
+
+.door-open-left {
+  transform: rotateY(-100deg);
+}
+
+.door-open-right {
+  transform: rotateY(100deg);
+}
+
+/* Contenedor para el formulario y el contenido detrás */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Estará sobre las puertas */
+}
+
+/* Estilos del formulario */
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2em;
+  background-color: #171717;
+  border-radius: 25px;
+  width: 80%;
+  transition: 0.4s ease-in-out;
+}
+
+/* Clase para ocultar el formulario suavemente */
+.form.hidden {
+  opacity: 0;
+  pointer-events: none; /* Evita interacciones cuando está oculto */
+  transform: translate(-50%, -50%) scale(0.9); /* Pequeña escala hacia adentro */
+}
+
+#heading {
+  text-align: center;
+  margin: 2em;
+  color: #fff;
+  font-size: 1.2em;
+}
+
+/* Campos de entrada */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  color: white;
+}
+
+/* Estilo cuando el campo está enfocado */
+.field:focus-within {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);
+}
+
+.input-icon {
+  height: 1.5em;
+  width: 1.5em;
+  fill: #aaa; /* Color placeholder para iconos */
+  transition: fill 0.3s ease-in-out;
+}
+
+.field:focus-within .input-icon {
+  fill: #007bff; /* Color accent para iconos al enfocar */
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+}
+
+.input-field::placeholder {
+  color: #aaa;
+}
+
+/* Contenedor para botones */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 2em;
+}
+
+/* Estilos generales para todos los botones */
+.button1, .button2, .button3 {
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #252525;
+  color: white;
+  transition: 0.4s ease-in-out;
+}
+
+/* Botón Login */
+.button1 {
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  margin-right: 0.5em;
+}
+
+.button1:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Botón Sign Up */
+.button2 {
+  padding-left: 2.3em;
+  padding-right: 2.3em;
+}
+
+.button2:hover {
+  background-color: #444;
+  border-color: #444;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Botón Forgot Password */
+.button3 {
+  margin-top: 1em;
+  padding: 10px 0;
+}
+
+.button3:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-color: #dc3545;
+  color: #dc3545;
+  transform: translateY(-2px);
+}
+
+/* Contenido detrás de las puertas */
+.content-behind {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Inicialmente detrás de todo */
+  width: 100%;
+  height: 100%;
+  background-color: #111; /* Mismo fondo que el body */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  opacity: 0;
+  /* La transición es importante: opacidad después de que las puertas empiecen a abrirse */
+  transition: opacity 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s, z-index 0s linear 0.5s;
+}
+
+/* Clase para hacer visible el contenido */
+.content-behind.visible {
+  opacity: 1;
+  z-index: 2; /* Asegura que esté visible una vez que las puertas se abren */
+  transition: opacity 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s, z-index 0s linear 0s; /* z-index se aplica de inmediato */
+}
+
+/* Estilos para los iconos SVG */
+.user-icon-svg path,
+.password-icon-svg path {
+  fill: #aaa; /* Color placeholder para iconos */
+}
+
+/* Cambiar color de los iconos al enfocar el campo */
+.field:focus-within .input-icon {
+  fill: #007bff;
+}
+
+/* Cuando las puertas están en proceso de apertura, cambiar el color de los iconos */
+.container.doors-opening .field .input-icon {
+  fill: #007bff;
+}
+
+/*FIN DE PORTAL DE LOGIN*/
+/*PORTAL DE GESTIÓN DE PRODUCTOS*/
+.matterraw-box-matterraw {
+  font-family: "Open Sans", sans-serif;
+  background: #0f0f0f;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 30px;
+  overflow-x: hidden;
+}
+
+.matterraw-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.matterraw-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+.matterraw-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: none;
+  background: none;
+  -webkit-text-fill-color: #e0e0e0;
+}
+.matterraw-header p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  font-weight: 400;
+  text-shadow: none;
+}
+
+.matterraw-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: all 0.4s ease-in-out cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.matterraw-glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+.matterraw-glass-card:hover .matterraw-card-icon {
+  transform: scale(1.05);
+}
+
+.matterraw-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.matterraw-card-icon {
+  width: 50px;
+  height: 50px;
+  background: #007bff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  color: white;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.matterraw-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  text-shadow: none;
+}
+
+.matterraw-form-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+  align-items: end;
+}
+
+.matterraw-form-group {
+  position: relative;
+}
+
+.matterraw-form-label {
+  display: block;
+  font-weight: 600;
+  color: #bdbdbd;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  text-shadow: none;
+}
+
+.matterraw-form-input, .matterraw-form-select {
+  width: 100%;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  color: #e0e0e0;
+  outline: none;
+}
+.matterraw-form-input::placeholder, .matterraw-form-select::placeholder {
+  color: #aaa;
+}
+.matterraw-form-input:focus, .matterraw-form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  transform: translateY(-2px) scale(1.01);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.matterraw-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+.matterraw-btn.matterraw-btn-primary {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: white;
+}
+.matterraw-btn.matterraw-btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.matterraw-table-container {
+  overflow: hidden;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.matterraw-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.matterraw-table thead {
+  background: #2c3e50;
+  color: #e0e0e0;
+}
+.matterraw-table th {
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.matterraw-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.matterraw-table tbody tr {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.matterraw-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: none;
+}
+
+.matterraw-price-badge, .matterraw-quantity-badge, .matterraw-unit-badge {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: none;
+  display: inline-block;
+}
+
+.matterraw-price-badge {
+  background: #007bff;
+}
+
+.matterraw-quantity-badge {
+  background: #2c3e50;
+}
+
+.matterraw-unit-badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: #bdbdbd;
+}
+
+.matterraw-action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.matterraw-btn-icon {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+}
+.matterraw-btn-icon.matterraw-btn-edit {
+  background: #007bff;
+  color: white;
+}
+.matterraw-btn-icon.matterraw-btn-delete {
+  background: #dc3545;
+  color: white;
+}
+.matterraw-btn-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.matterraw-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.matterraw-stats-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+.matterraw-stats-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.matterraw-stats-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: none;
+  background-clip: unset;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #e0e0e0;
+  animation: none;
+}
+
+.matterraw-stats-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+.matterraw-floating-add {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #007bff;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.matterraw-floating-add:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Toast notifications */
+.matterraw-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  z-index: 10000;
+  transform: translateX(400px) scale(0.8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 350px;
+  opacity: 0;
+}
+.matterraw-toast.show {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.matterraw-toast-success {
+  background: linear-gradient(45deg, #38ef7d, #11998e);
+  color: white;
+}
+
+.matterraw-toast-error, .matterraw-toast-warning {
+  background: linear-gradient(45deg, #f093fb, #f5576c);
+  color: white;
+}
+
+.matterraw-toast-info {
+  background: #2c3e50;
+  color: #e0e0e0;
+}
+
+/* Animaciones (Prefijadas con 'matterraw' para especificidad) */
+@keyframes matterrawSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes matterrawFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+/* Responsive */
+@media (max-width: 992px) {
+  .matterraw-form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .matterraw-header h1 {
+    font-size: 2.5rem;
+  }
+  .matterraw-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .matterraw-box-matterraw { /* Ajusta el padding general del body */
+    padding: 15px;
+  }
+  .matterraw-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .matterraw-glass-card {
+    padding: 25px;
+  }
+  .matterraw-header h1 {
+    font-size: 2.2rem;
+  }
+  .matterraw-table-container {
+    overflow-x: auto;
+  }
+  .matterraw-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .matterraw-floating-add {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+/* Scrollbar personalizado */
+/* Nota: Los selectores de scrollbar son específicos de WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
+
+/*FIN DE PORTAL DE GESTIÓN DE PRODUCTOS*/
+
+/*# sourceMappingURL=style.css.map */

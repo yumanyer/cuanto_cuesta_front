@@ -1,0 +1,76 @@
+// 🎨 Colores
+$color-bg: #0f0f0f; // Fondo principal
+$color-card-bg: #1b1b1b; // Fondo cards
+$color-dark: #111;
+$color-dark-alt: #171717;
+$color-door-bg: #1a1a1a; // Matter Raw primary-bg
+$color-secondary-bg: #2c3e50; // Matter Raw secondary-bg
+$color-bt-bg: #252525;
+$color-placeholder: #aaa;
+$color-text-primary: #f5f5f5;
+$color-text-secondary: #bbbbbb;
+$color-text-primary-mr: #e0e0e0; // Matter Raw text-primary
+$color-text-secondary-mr: #bdbdbd; // Matter Raw text-secondary
+$color-accent: #007bff;
+$color-accent-dark: #0056b3; // Para hover
+$color-danger: #dc3545;
+
+// 🖌 Degradados
+$gradient-accent: linear-gradient(135deg, #d4af37, #cfa35f);
+$gradient-button-primary: linear-gradient(45deg, $color-accent, $color-accent-dark);
+
+// 🆎 Tipografía
+$font-primary: 'Open Sans', sans-serif;
+$font-secondary: 'Playfair Display', serif;
+$font-ui: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+// 🌌 Sombras
+$shadow-inset-dark: inset 0 0 40px rgba(0, 0, 0, 0.8);
+$shadow-blue: 0 8px 20px rgba(0, 123, 255, 0.4);
+$shadow-soft: 0 5px 20px rgba(0, 0, 0, 0.2);
+$shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+// 🪟 Glassmorphism
+$glass-bg: rgba(255, 255, 255, 0.08);
+$glass-border: rgba(255, 255, 255, 0.15);
+
+// 🔲 Bordes
+$radius-card: 15px;
+$radius-input: 10px;
+$radius-button: 10px;
+
+// ⏳ Tiempos
+$transition-fast: 0.4s ease-in-out;
+$transition-doors: 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+// _mixins.scss (si usas mixins, como en tu ejemplo)
+@mixin card-style {
+  background: $glass-bg;
+  backdrop-filter: blur(10px);
+  border-radius: $radius-card;
+  border: 1px solid $glass-border;
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: all $transition-fast cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: $shadow-soft;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-hover;
+
+    .matterraw-card-icon { // Asegúrate de que el selector sea específico
+      transform: scale(1.05);
+    }
+  }
+}
+
+@mixin button-primary {
+  background: $gradient-button-primary;
+  color: white;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: $shadow-hover;
+  }
+}

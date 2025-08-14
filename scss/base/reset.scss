@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    display: flex;
+    flex-direction: column; /* Para que header y main se apilen */
+    align-items: center; /* Centra el contenido en el eje horizontal */
+    min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la ventana */
+    padding: 0 10px; /* Padding general para contenido si la ventana es muy estrecha */
+}

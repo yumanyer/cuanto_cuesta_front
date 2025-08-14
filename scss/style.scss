@@ -1,0 +1,21 @@
+
+/* Variables de color y tipografía */
+@use "util/mixin";
+/*FIN DE VARIABLES*/
+
+
+/*BASES GENERALES*/
+@use "base/reset";
+/*FIN DE BASES GENERALES*/
+
+/*PORTAL DE ACCESO*/
+@use "layout/home";
+/*FIN DE PORTAL DE ACCESO*/
+
+/*PORTAL DE LOGIN*/
+@use "layout/login";
+/*FIN DE PORTAL DE LOGIN*/
+
+/*PORTAL DE GESTIÓN DE PRODUCTOS*/
+@use "layout/matterRaw";
+/*FIN DE PORTAL DE GESTIÓN DE PRODUCTOS*/
