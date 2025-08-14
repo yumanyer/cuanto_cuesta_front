@@ -42,6 +42,7 @@ $radius-button: 10px;
 // ⏳ Tiempos
 $transition-fast: 0.4s ease-in-out;
 $transition-doors: 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+$transiton-loader:opacity 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s, z-index 0s linear 0.5s;
 // _mixins.scss (si usas mixins, como en tu ejemplo)
 @mixin card-style {
   background: $glass-bg;

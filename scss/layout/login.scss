@@ -73,6 +73,24 @@
 .door-open-left { transform: rotateY(-100deg); }
 .door-open-right { transform: rotateY(100deg); }
 
+
+/*PICAPORTES */
+.door::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #171717, inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.door-right::before {left: 10%;}
+
+.door-left::before {right: 10%;}
+
     /* Contenedor para el formulario y el contenido detrás */
     .overlay-container {
       position: absolute;
@@ -220,29 +238,31 @@
 
 
     /* Contenido detrás de las puertas */
-    .content-behind {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1; /* Inicialmente detrás de todo */
-      width: 100%;
-      height: 100%;
-      background-color: $color-dark; /* Mismo fondo que el body */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 2.5rem;
-      opacity: 0;
-      /* La transición es importante: opacidad después de que las puertas empiecen a abrirse */
-      transition: opacity 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s, z-index 0s linear 0.5s;
-    }
+.content-behind {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); // Centra horizontalmente
+  z-index: -1;
+  width: 90%;          // Más ancho que antes
+  max-width: 800px;    // Evita que crezca demasiado en pantallas grandes
+  height: 100%;
+  background-color: $color-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;     // Ajusta el tamaño del texto
+  opacity: 0;
+  text-align: center;   // Centra el texto horizontalmente
+  transition: $transiton-loader;
+}
 
     /* Clase para hacer visible el contenido */
     .content-behind.visible {
       opacity: 1;
       z-index: 2; /* Asegura que esté visible una vez que las puertas se abren */
-      transition: opacity 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s, z-index 0s linear 0s; /* z-index se aplica de inmediato */
+      transition: $transiton-loader;
     }
 
     /* Estilos para los iconos SVG */

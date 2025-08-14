@@ -1,68 +1,66 @@
-    document.addEventListener('DOMContentLoaded', () => {
-      const loginForm = document.getElementById('loginForm');
-      const usernameInput = document.getElementById('username');
-      const passwordInput = document.getElementById('password');
-      const errorMessage = document.getElementById('errorMessage');
-      const contentBehind = document.getElementById('contentBehind');
-      const container = document.querySelector('.container');
-      const leftDoor = document.querySelector('.door-left');
-      const rightDoor = document.querySelector('.door-right');
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const errorMessage = document.getElementById('errorMessage');
+  const contentBehind = document.getElementById('contentBehind');
+  const loader = document.getElementById('loader');
+  const welcomeMessage = document.createElement('div'); // contenedor dinámico para el mensaje
+  contentBehind.appendChild(welcomeMessage);
 
-      // Simulación de credenciales correctas
-      const CORRECT_USERNAME = 'admin';
-      const CORRECT_PASSWORD = '123';
+  const container = document.querySelector('.container');
+  const leftDoor = document.querySelector('.door-left');
+  const rightDoor = document.querySelector('.door-right');
 
-      loginForm.addEventListener('submit', function (e) {
-        e.preventDefault(); // Previene el envío del formulario por defecto
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-        const username = usernameInput.value.trim();
-        const password = passwordInput.value.trim();
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
 
-        // Limpiar mensajes de error anteriores
-        errorMessage.textContent = '';
-        usernameInput.style.borderColor = ''; // Reset border color
-        passwordInput.style.borderColor = ''; // Reset border color
+    // Limpiar mensajes de error anteriores
+    errorMessage.textContent = '';
+    usernameInput.style.borderColor = '';
+    passwordInput.style.borderColor = '';
 
-        if (!username || !password) {
-          errorMessage.textContent = 'Por favor, completa ambos campos.';
-          if (!username) usernameInput.style.borderColor = '#dc3545'; // Color de error
-          if (!password) passwordInput.style.borderColor = '#dc3545'; // Color de error
-          return; // Detiene la ejecución si faltan campos
-        }
+    if (!username || !password) {
+      errorMessage.textContent = 'Por favor, completa ambos campos.';
+      if (!username) usernameInput.style.borderColor = '#dc3545';
+      if (!password) passwordInput.style.borderColor = '#dc3545';
+      return;
+    }
 
-        // Simulación de validación de credenciales
-        if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
-          // 1. Ocultar el formulario con la animación slide-out-top
-          loginForm.classList.add('slide-out-top'); // Añade la clase de animación
+    // 1. Ocultar formulario con animación
+    loginForm.classList.add('slide-out-top');
 
-          // 2. Iniciar la apertura de las puertas
-          // Se añade un pequeño retraso para que la animación del formulario se vea primero
-          setTimeout(() => {
-            container.classList.add('doors-opening'); // Clase para activar la transición de las puertas
-            leftDoor.classList.add('door-open-left');
-            rightDoor.classList.add('door-open-right');
-          }, 400); // El retraso (400ms) debe ser menor que la duración de la animación del formulario (500ms)
+    // 2. Abrir puertas después de un pequeño delay
+    setTimeout(() => {
+      container.classList.add('doors-opening');
+      leftDoor.classList.add('door-open-left');
+      rightDoor.classList.add('door-open-right');
+    }, 400);
 
-          // 3. Mostrar el contenido detrás de las puertas
-          // Este setTimeout debe ser un poco más largo que la animación de las puertas
-          setTimeout(() => {
-            contentBehind.classList.add('visible');
-          }, 1200); // Aproximadamente el tiempo total de la animación de las puertas + un poco más
+    // 3. Mostrar loader y mensaje de validación
+    setTimeout(() => {
+      loader.style.display = 'block';
+      welcomeMessage.innerHTML = `<h2 style="color:white">Estamos validando sus credenciales, ${username}...</h2>`;
+      contentBehind.classList.add('visible');
+    }, 1200);
 
-        } else {
-          errorMessage.textContent = 'Nombre de usuario o contraseña incorrectos.';
-          usernameInput.style.borderColor = '#dc3545';
-          passwordInput.style.borderColor = '#dc3545';
-          passwordInput.value = ''; // Limpia la contraseña
-        }
-      });
+    // 4. Simular validación de backend
+    setTimeout(() => {
+      loader.style.display = 'none';
+      // Redirigir a matterRaw.html
+      window.location.href = '/public/scss/pages/matterRaw.html';
+    }, 32000); // 2 segundos de simulación de validación
+  });
 
-      // Opcional: Añadir funcionalidad a los otros botones
-      document.querySelector('.button2').addEventListener('click', () => {
-        alert('Funcionalidad de registro no implementada.');
-      });
+  // Funcionalidad de botones secundarios
+  document.querySelector('.button2').addEventListener('click', () => {
+    alert('Funcionalidad de registro no implementada.');
+  });
 
-      document.querySelector('.button3').addEventListener('click', () => {
-        alert('Funcionalidad de recuperación de contraseña no implementada.');
-      });
-    });
+  document.querySelector('.button3').addEventListener('click', () => {
+    alert('Funcionalidad de recuperación de contraseña no implementada.');
+  });
+});
