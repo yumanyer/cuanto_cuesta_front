@@ -19,18 +19,17 @@
       <!-- Contenido que se muestra al abrir las puertas -->
       <div class="content-behind" id="contentBehind">
       <div id="loader" class="loader" style="display:none;">
-                <div class="pyramid-loader">
-          <div class="wrapper">
-            <span class="side side1"></span>
-            <span class="side side2"></span>
-            <span class="side side3"></span>
-            <span class="side side4"></span>
-            <span class="shadow"></span>
-          </div>
+            <div class="pyramid-loader">
+                <div class="wrapper">
+                  <span class="side side1"></span>
+                  <span class="side side2"></span>
+                  <span class="side side3"></span>
+                  <span class="side side4"></span>
+                  <span class="shadow"></span>
                 </div>
-
-        </div>
-      </div>
+            </div>
+       </div>
+    </div>
 
       <!-- Formulario de inicio de sesión -->
       <form class="form" id="loginForm">
@@ -54,8 +53,9 @@
             <p id="errorMessage" class="error-message"></p>
         </div>
         <div class="btn-group"> <!-- Cambiado a btn-group para mejor semántica -->
-          <button class="button button1" type="submit">Login</button>
-          <button class="button button2" type="button">Sign Up</button>
+          <button class="button button1" type="submit" >Login</button>
+          <button class="button button2" type="button" onclick="window.location.href='/public/scss/pages/sign-up.html'">Sign Up</button>
+
         </div>
         <button class="button button3" type="button">Forgot Password</button>
       </form>

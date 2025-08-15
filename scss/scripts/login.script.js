@@ -43,21 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Mostrar loader y mensaje de validación
     setTimeout(() => {
       loader.style.display = 'block';
-      welcomeMessage.innerHTML = `<h2 style="color:white">Estamos validando sus credenciales, ${username}...</h2>`;
+      welcomeMessage.innerHTML = `<h2 style="color: white; font-size: smaller; margin-bottom: 15rem;">Estamos validando sus credenciales, ${username}...</h2>`;
       contentBehind.classList.add('visible');
     }, 1200);
 
     // 4. Simular validación de backend
-    setTimeout(() => {
-      loader.style.display = 'none';
-      // Redirigir a matterRaw.html
-      window.location.href = '/public/scss/pages/matterRaw.html';
-    }, 32000); // 2 segundos de simulación de validación
-  });
-
-  // Funcionalidad de botones secundarios
-  document.querySelector('.button2').addEventListener('click', () => {
-    alert('Funcionalidad de registro no implementada.');
+    //setTimeout(() => {
+    //  loader.style.display = 'none';
+    //  // Redirigir a matterRaw.html
+    //  window.location.href = '/public/scss/pages/matterRaw.html';
+    //}, 32000); // 2 segundos de simulación de validación
   });
 
   document.querySelector('.button3').addEventListener('click', () => {
