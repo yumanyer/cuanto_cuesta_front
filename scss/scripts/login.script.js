@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
       contentBehind.classList.add('visible');
     }, 1200);
 
-    // 4. Simular validación de backend
-    //setTimeout(() => {
-    //  loader.style.display = 'none';
-    //  // Redirigir a matterRaw.html
-    //  window.location.href = '/public/scss/pages/matterRaw.html';
-    //}, 32000); // 2 segundos de simulación de validación
+     //4. Simular validación de backend
+    setTimeout(() => {
+      loader.style.display = 'none';
+      // Redirigir a matterRaw.html
+      window.location.href = '/public/scss/pages/matterRaw.html';
+    }, 3200); // 2 segundos de simulación de validación
   });
 
   document.querySelector('.button3').addEventListener('click', () => {
